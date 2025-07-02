@@ -1,0 +1,23 @@
+/* Force LiveKit chat panel to always be visible when open, even after toggling camera */
+.lk-chat-panel,
+.lkc-chat-panel {
+  display: flex !important;
+  opacity: 1 !important;
+  transform: none !important;
+  z-index: 1050 !important;
+  max-width: 400px !important;
+  min-width: 320px !important;
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-left: 1.5px solid var(--accent-gold, #ffe066) !important;
+  border-radius: var(--radius-xl) 0 0 var(--radius-xl) !important;
+  box-shadow: var(--shadow-card, 0 8px 48px 0 #ffe06633, 0 1.5px 0 #fff1) !important;
+}
+
+/* Prevent chat from vanishing on camera toggle or resize */
+.lkc-side-panel--hidden,
+.lk-side-panel--hidden {
+  display: flex !important;
+  opacity: 1 !important;
+  transform: none !important;
+}

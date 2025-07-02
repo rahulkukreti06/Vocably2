@@ -1,0 +1,175 @@
+.room-card {
+  background: var(--bg-card, #181a1b);
+  border: 1.5px solid var(--border-color, #22242a);
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 48px 0 #ffe06633, 0 1.5px 0 #fff1;
+  padding: 2.2rem 2rem 2rem 2rem;
+  margin: 1.5rem 0;
+  color: var(--text-primary, #f6f6f6);
+  transition: box-shadow 0.18s cubic-bezier(.4,2,.3,1), background 0.18s cubic-bezier(.4,2,.3,1), border-color 0.18s;
+  display: flex;
+  flex-direction: column;
+}
+
+.room-card:hover {
+  box-shadow: 0 16px 48px #10b98133;
+  background: var(--bg-hover, #23272f);
+  border-color: var(--primary, #10b981);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.room-card__host-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #23272f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+}
+
+.room-card__badge {
+  border-radius: 7px;
+  padding: 2.5px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 6px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.room-card__join-btn {
+  font-size: 15px;
+  padding: 0.5rem 1.6rem;
+  border-radius: 8px;
+  background: #191b20;
+  color: #ffd700;
+  border: none;
+  font-weight: 700;
+  box-shadow: none;
+  transition: background 0.18s, color 0.18s;
+  outline: none;
+  min-width: 100px;
+  cursor: pointer;
+}
+.room-card__join-btn:hover,
+.room-card__join-btn:focus {
+  background: #23272f;
+  color: #fff;
+  box-shadow: 0 4px 24px #10b98133;
+}
+
+@media (max-width: 500px) {
+  .room-card {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    min-height: 180px;
+    margin: 0.7rem 0;
+  }
+  .room-card__host-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  .room-card__badge {
+    font-size: 11px;
+    padding: 2px 7px;
+    margin-right: 3px;
+  }
+  .room-card__join-btn {
+    font-size: 13px;
+    padding: 0.4rem 1rem;
+    min-width: 80px;
+    border-radius: 7px;
+  }
+}
+
+/* Stack card content vertically on mobile */
+@media (max-width: 500px) {
+  .room-card {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .room-card {
+    padding: 0.5rem 0.2rem 0.5rem 0.2rem;
+    min-height: 120px;
+  }
+  .room-card__host-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+  .room-card__badge {
+    font-size: 9.5px;
+    padding: 1.5px 5px;
+  }
+  .room-card__join-btn {
+    font-size: 11px;
+    padding: 0.3rem 0.7rem;
+    min-width: 60px;
+    border-radius: 6px;
+  }
+}
+
+/* Light theme overrides for room cards - removed to avoid conflicts, see vocably.css for global override */
+/*
+html.light .room-card,
+body.light .room-card,
+html.light .RoomCard_room-card__4QSdZ,
+body.light .RoomCard_room-card__4QSdZ {
+  background: #f8f9fa !important;
+  color: #2c3e50 !important;
+  border-radius: 1.2rem !important;
+  box-shadow: 0 3px 16px rgba(44, 62, 80, 0.04), 0 1px 0 rgba(44, 62, 80, 0.02) !important;
+  border: 1.5px solid rgba(44, 62, 80, 0.08) !important;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+html.light .room-card:hover,
+body.light .room-card:hover,
+html.light .RoomCard_room-card__4QSdZ:hover,
+body.light .RoomCard_room-card__4QSdZ:hover {
+  box-shadow: 0 8px 24px rgba(44, 62, 80, 0.08), 0 2px 0 rgba(44, 62, 80, 0.04) !important;
+  background: #eef1f5 !important;
+}
+*/
+html.light .room-card__title,
+body.light .room-card__title {
+  color: #34495e !important;
+}
+html.light .room-card__meta,
+body.light .room-card__meta {
+  color: #556a7f !important;
+}
+html.light .room-card__status,
+body.light .room-card__status,
+html.light .room-card__participants,
+body.light .room-card__participants {
+  background: rgba(52, 152, 219, 0.1) !important;
+  color: #2980b9 !important;
+}
+html.light .room-card__host-avatar,
+body.light .room-card__host-avatar {
+  background: #e0e5ec !important;
+  color: #2c3e50 !important;
+}
+html.light .room-card__badge,
+body.light .room-card__badge {
+  background: #e0e5ec !important;
+  color: #2980b9 !important;
+  border: 1.5px solid #b0bec5 !important;
+}
+html.light .room-card__join-btn,
+body.light .room-card__join-btn {
+  background: #3498db !important;
+  color: #fff !important;
+}
+html.light .room-card__join-btn:hover,
+body.light .room-card__join-btn:hover {
+  background: #e0e0e0 !important;
+  color: #232e4d !important;
+}

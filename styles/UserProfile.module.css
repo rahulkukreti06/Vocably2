@@ -1,0 +1,386 @@
+.modal {
+  background: linear-gradient(145deg, rgba(16,18,27,0.95) 0%, rgba(25,28,40,0.95) 100%);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 3rem;
+  width: 90%;
+  max-width: 720px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+  color: rgba(255,255,255,0.9);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.premiumIcon {
+  color: #ffd700;
+  filter: drop-shadow(0 0 12px rgba(255,215,0,0.4));
+  width: 36px;
+  height: 36px;
+}
+
+.title {
+  font-size: 2rem;
+  background: linear-gradient(45deg, #ffd700, #fff3b0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  margin-left: 1.2rem;
+}
+
+.section {
+  margin: 3rem 0;
+  padding: 2.5rem;
+  background: rgba(12,15,25,0.6);
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+
+.inputContainer {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.inputField {
+  width: 100%;
+  padding: 1.5rem 2rem 1.5rem 4rem;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 14px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.inputField:focus {
+  background: rgba(0,0,0,0.5);
+  border-color: #ffd700;
+  box-shadow: 0 0 0 3px rgba(255,215,0,0.15);
+}
+
+.languageCard {
+  background: linear-gradient(145deg, rgba(18,20,30,0.8), rgba(25,28,40,0.8));
+  border-radius: 18px;
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: transform 0.3s ease;
+}
+
+.addButton {
+  background: linear-gradient(45deg, #ffd700, #ffb700);
+  color: #0a0a0a;
+  font-weight: 600;
+  border: none;
+  padding: 1.2rem 2.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.03em;
+}
+
+.addButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px rgba(255,215,0,0.3);
+}
+
+.languageItem {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 1.8rem;
+  background: rgba(0,0,0,0.3);
+  border-radius: 12px;
+  margin: 1rem 0;
+  animation: floatIn 0.4s ease-out;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sectionBadge {
+  background: linear-gradient(45deg, #ffd700, #ffaa00);
+  color: #000;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-left: 1rem;
+}
+
+.languageList {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.icon {
+  margin-right: 0.5rem;
+  color: #4dabf7;
+}
+
+.removeButton {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.removeButton:hover {
+  color: #ff5252;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 0.5rem;
+}
+
+.closeButton:hover {
+  color: #333;
+}
+
+.addLanguage {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.avatarSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.avatarGlow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, #ffd70044 0%, #181a1b 80%);
+  border-radius: 50%;
+  padding: 6px;
+  box-shadow: 0 0 24px 0 #ffd70055, 0 2px 12px #10b98133;
+}
+
+.avatarCircle {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #23272f 60%, #181a1b 100%);
+  color: #ffd700;
+  font-size: 2.3rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px #10b98133;
+  border: 2.5px solid #ffd70088;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 8px #ffd70055;
+}
+
+.avatarIcon {
+  width: 56px;
+  height: 56px;
+  color: #ffd700;
+  filter: drop-shadow(0 0 8px #ffd70088);
+}
+
+.avatarDivider {
+  width: 100%;
+  height: 2.5px;
+  background: linear-gradient(90deg, #ffd70033 0%, #10b98122 100%);
+  border-radius: 2px;
+  margin: 0.7rem 0 1.2rem 0;
+  opacity: 0.7;
+}
+
+/* --- LIGHT THEME PREMIUM OVERRIDES FOR USER PROFILE --- */
+html.light .modal,
+body.light .modal,
+html.light .UserProfile_modal___hSZ0,
+body.light .UserProfile_modal___hSZ0 {
+  background: linear-gradient(135deg, #fffbe6 80%, #ffe066 100%) !important;
+  color: #232e4d !important;
+  box-shadow: 0 24px 60px #ffe06655, 0 1.5px 0 #ffe06633 !important;
+  border: 1.5px solid #ffe066cc !important;
+}
+html.light .modalHeader,
+body.light .modalHeader {
+  border-bottom: 1px solid #ffe06655 !important;
+}
+html.light .title,
+body.light .title {
+  background: linear-gradient(90deg, #bfa100 60%, #ffe066 100%) !important;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #bfa100 !important;
+}
+html.light .section,
+body.light .section {
+  background: linear-gradient(120deg, #fffde6 80%, #ffe066 100%) !important;
+  color: #232e4d !important;
+  box-shadow: 0 8px 32px #ffe06633 !important;
+  border-radius: 20px !important;
+  border: 1.5px solid #ffe06655 !important;
+}
+html.light .section:hover,
+body.light .section:hover {
+  box-shadow: 0 16px 40px #ffe06666 !important;
+  background: linear-gradient(120deg, #fffbe6 60%, #ffe066 100%) !important;
+}
+html.light .inputField,
+body.light .inputField {
+  background: #fffde6 !important;
+  color: #232e4d !important;
+  border: 1.5px solid #ffe06699 !important;
+  box-shadow: 0 2px 8px #ffe06622 !important;
+}
+html.light .inputField:focus,
+body.light .inputField:focus {
+  border-color: #bfa100 !important;
+  box-shadow: 0 0 0 3px #ffe06655 !important;
+}
+html.light .addButton,
+body.light .addButton {
+  background: linear-gradient(90deg, #ffe066 80%, #fffbe6 100%) !important;
+  color: #232e4d !important;
+  box-shadow: 0 4px 16px #ffe06644 !important;
+  border: 1.5px solid #ffe06699 !important;
+}
+html.light .addButton:hover,
+body.light .addButton:hover {
+  background: linear-gradient(90deg, #fffbe6 70%, #ffe066 100%) !important;
+  color: #181a1b !important;
+  box-shadow: 0 8px 32px #ffe06666 !important;
+}
+html.light .languageCard,
+body.light .languageCard {
+  background: linear-gradient(135deg, #fffbe6 80%, #ffe066 100%) !important;
+  color: #232e4d !important;
+  border: 1.5px solid #ffe06655 !important;
+  box-shadow: 0 2px 12px #ffe06622 !important;
+}
+html.light .languageItem,
+body.light .languageItem {
+  background: #fffde6 !important;
+  color: #232e4d !important;
+  border: 1px solid #ffe06655 !important;
+  box-shadow: 0 1px 4px #ffe06622 !important;
+}
+html.light .sectionBadge,
+body.light .sectionBadge {
+  background: #ffe066 !important;
+  color: #232e4d !important;
+  border: 1px solid #ffe06699 !important;
+  box-shadow: 0 2px 8px #ffe06644 !important;
+}
+html.light .premiumIcon,
+body.light .premiumIcon,
+html.light .premiumIconSmall,
+body.light .premiumIconSmall {
+  color: #bfa100 !important;
+  filter: drop-shadow(0 0 12px #ffe06688) !important;
+}
+html.light .avatarGlow,
+body.light .avatarGlow {
+  background: radial-gradient(circle, #ffe06644 0%, #fffbe6 80%) !important;
+  box-shadow: 0 0 24px 0 #ffe06655, 0 2px 12px #ffe06633 !important;
+}
+html.light .avatarCircle,
+body.light .avatarCircle {
+  background: #fffbe6 !important;
+  color: #bfa100 !important;
+  border: 2.5px solid #ffe066cc !important;
+  text-shadow: 0 2px 8px #ffe06655 !important;
+}
+html.light .removeButton,
+body.light .removeButton {
+  color: #ff5252 !important;
+}
+html.light .closeButton,
+body.light .closeButton {
+  color: #232e4d !important;
+}
+html.light .icon,
+body.light .icon {
+  color: #4dabf7 !important;
+}
+html.light .select,
+body.light .select {
+  background: #fffbe6 !important;
+  color: #232e4d !important;
+  border: 1.5px solid #ffe06699 !important;
+  box-shadow: 0 1px 4px #ffe06622 !important;
+}
+html.light .select:focus,
+body.light .select:focus {
+  border-color: #bfa100 !important;
+  box-shadow: 0 0 0 2px #ffe06655 !important;
+}
+html.light .languageLevel,
+body.light .languageLevel {
+  color: #bfa100 !important;
+  font-weight: 700 !important;
+}
+html.light .cardTitle,
+body.light .cardTitle {
+  color: #bfa100 !important;
+  background: linear-gradient(90deg, #bfa100 60%, #ffe066 100%) !important;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html.light .languageIcon,
+body.light .languageIcon {
+  color: #10b981 !important;
+}
+html.light .premiumIcon,
+body.light .premiumIcon {
+  color: #bfa100 !important;
+}
+html.light .premiumIconSmall,
+body.light .premiumIconSmall {
+  color: #bfa100 !important;
+}
+html.light .avatarDivider,
+body.light .avatarDivider {
+  background: linear-gradient(90deg, #ffe06633 0%, #fffbe6 100%) !important;
+}
+html.light .modal .addButton:disabled,
+body.light .modal .addButton:disabled {
+  background: #ffe06677 !important;
+  color: #bdbdbd !important;
+  cursor: not-allowed !important;
+}
+html.light .modal .addButton:active,
+body.light .modal .addButton:active {
+  background: #ffe066cc !important;
+  color: #232e4d !important;
+}

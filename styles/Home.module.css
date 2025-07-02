@@ -1,0 +1,58 @@
+.main {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  overflow-y: auto;
+}
+
+.tabContainer {
+  width: 100%;
+  max-width: 480px;
+  background: #1a1a1a;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.tabSelect {
+  display: flex;
+  gap: 0.25rem;
+  background: var(--bg-hover, #23272f);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabSelect > * {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  color: var(--text-primary, #f6f6f6);
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.tabSelect > *:hover {
+  background: #2a2a2a;
+}
+
+.tabSelect > *.active {
+  background: var(--accent-gold, #ffe066);
+  color: var(--text-primary, #f6f6f6);
+}
+
+.tabContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--bg-card, #181a1b);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
+}

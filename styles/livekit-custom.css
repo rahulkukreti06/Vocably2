@@ -1,0 +1,39 @@
+/* Custom styles for LiveKit VideoConference UI */
+
+/* LiveKit VideoConference nav bar */
+.lkc-navbar, .lk-navbar, .lk-header {
+  background: linear-gradient(90deg, #23272f 60%, #6366f1 100%) !important;
+  color: #fff !important;
+  border-bottom: 2px solid #10b981 !important;
+}
+
+/* LiveKit VideoConference buttons */
+.lkc-navbar button,
+.lk-navbar button,
+.lk-header button {
+  background: none !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.lkc-navbar button:hover,
+.lk-navbar button:hover,
+.lk-header button:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-1.5px) !important;
+}
+
+.lkc-navbar button:active,
+.lk-navbar button:active,
+.lk-header button:active {
+  transform: translateY(0) !important;
+}
+
+
+
+
+
+

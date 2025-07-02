@@ -1,0 +1,33 @@
+.room-list-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1.5rem;
+  width: 100vw;
+  max-width: 1100px;
+  margin: 0 auto 2.5rem auto;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  align-items: stretch;
+}
+
+.roomCard {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.room-card {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 3rem 2.5rem 2.5rem 2.5rem;
+  min-height: 320px;
+}
+
+@media (max-width: 700px) {
+  .room-list-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

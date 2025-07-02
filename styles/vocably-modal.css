@@ -1,0 +1,81 @@
+.vocably-select {
+  background: #181a20;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 16px;
+  min-height: 44px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.vocably-create-btn {
+  background: linear-gradient(90deg, #6366f1 0%, #7f53ac 100%) !important;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(99,102,241,0.15);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 12px 0;
+  transition: background 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.vocably-create-btn:hover {
+  background: linear-gradient(90deg, #7f53ac 0%, #6366f1 100%) !important;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.25);
+}
+
+.vocably-select:focus {
+  border-color: var(--primary, #6366f1);
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.15);
+}
+
+.vocably-create-btn {
+  background: linear-gradient(90deg, #6366f1 0%, #7f53ac 100%) !important;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(99,102,241,0.15);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 12px 0;
+  transition: background 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.vocably-select option {
+  background: #181a20;
+  color: #fff;
+}
+
+.vocably-select__option--is-selected {
+  background: #6366f1 !important;
+  color: #fff !important;
+}
+
+.vocably-select__menu {
+  background: #181a20 !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  border: 1px solid #333 !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35) !important;
+  margin-top: 6px !important;
+  padding: 2px 0 !important;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(99,102,241,0.15);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 12px 0;
+  transition: background 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.vocably-create-btn:hover {
+  background: linear-gradient(90deg, #7f53ac 0%, #6366f1 100%) !important;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.25);
+}
+

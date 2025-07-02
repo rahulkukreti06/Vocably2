@@ -1,0 +1,536 @@
+/* === HEADER.CSS CLASS DESCRIPTIONS === */
+
+/*
+.header-root: Main header wrapper, sticky at the top, handles background and shadow for the whole header.
+.header-container: Flex container for header content, aligns logo, search bar, and actions.
+.header-logo: Vocably logo/brand area, left-aligned, styled with gradient text.
+.header-center: Flex container to center the search bar in the header.
+.search-bar-container: Container for the search bar, centers and constrains its width.
+.search-input: Styles the search bar background, border, and layout.
+.search-input input: Styles the search input field itself.
+.header-actions: Container for right-aligned header actions (Create Room, profile, etc.).
+.header-btn, .create-room-btn: Styles for header action buttons (size, color, radius, etc.).
+.header-profile-dropdown: Popup dropdown for profile actions (theme switch, sign out).
+.header-mobile-menu: Mobile dropdown menu for header actions.
+.header-menu-btn: Hamburger/menu button for mobile header.
+*/
+
+/* === Global Theme Support === */
+html.dark, body.dark {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+
+html.light, body.light {
+  background: #fff !important;
+  color: #181a1b !important;
+}
+
+/* === Theme Support for Header === */
+html.dark .header-root,
+body.dark .header-root {
+  background: linear-gradient(90deg, #181a20 70%, #232e4d 100%);
+  color: #fff;
+}
+
+html.dark .header-brand-text,
+body.dark .header-brand-text {
+  color: #ffe066;
+  text-shadow: 0 2px 12px #ffe06655, 0 1px 0 #fffbe6cc;
+}
+
+html.dark .header-btn,
+body.dark .header-btn {
+  color: #ffe066;
+  background: none;
+}
+
+html.dark .header-btn:hover,
+body.dark .header-btn:hover {
+  background: #232e4d;
+  color: #fffbe6;
+}
+
+html.dark .search-input input,
+body.dark .search-input input {
+  background: #232e4d;
+  color: #fff;
+  border-color: #444;
+}
+
+html.light .header-root,
+body.light .header-root {
+  background: linear-gradient(90deg, #fff 70%, #ffe066 100%);
+  color: #181a1b;
+}
+
+html.light .header-brand-text,
+body.light .header-brand-text {
+  color: #232e4d;
+  text-shadow: none;
+}
+
+html.light .header-btn,
+body.light .header-btn {
+  color: #232e4d;
+  background: none;
+}
+
+html.light .header-btn:hover,
+body.light .header-btn:hover {
+  background: #ffe066;
+  color: #232e4d;
+}
+
+html.light .search-input input,
+body.light .search-input input {
+  background: #fff;
+  color: #232e4d;
+  border-color: #bbb;
+}
+
+/* === Header Root & Container === */
+.header-root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  left: 0;
+  right: 0;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  min-height: 4rem;
+  background: rgba(10, 10, 10, 0.82);
+  box-shadow: 0 4px 24px 0 #10b98111;
+  backdrop-filter: blur(12px) saturate(1.1);
+}
+
+html.dark .header-root,
+body.dark .header-root {
+  background: rgba(10, 10, 10, 0.88); /* Slightly more opaque for dark mode */
+  box-shadow: 0 4px 24px 0 #10b98133;
+}
+
+.header-root::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px; /* Thinner golden line */
+  background: linear-gradient(90deg, #ffe066 0%, #ffd700 100%);
+  box-shadow: 0 1px 4px #ffe06655;
+  z-index: 1001;
+  border-radius: 0 0 2px 2px;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0.5rem 1rem;
+  gap: 1.1rem;
+  position: relative;
+}
+
+.header-logo {
+  flex-shrink: 0;
+  min-width: 100px;
+  font-size: 2rem;
+  margin-right: 0.7rem;
+  margin-left: 0 !important;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-transform: none;
+  font-weight: bold;
+  text-shadow: 0 6px 16px rgba(16,185,129,0.6);
+  transition: transform 0.4s ease-in-out;
+  filter: drop-shadow(0 2px 8px #10b98144);
+  background: linear-gradient(90deg, #10b981 20%, #1de9b6 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none !important;
+}
+
+.header-logo:hover, .header-brand-text:hover {
+  transform: scale(1.05);
+  text-decoration: none !important;
+}
+
+/* === Header Title === */
+.header-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  background: linear-gradient(90deg, #fff, var(--primary) 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 6px 30px rgba(16,185,129,0.3);
+  margin: 0 40px 0 0;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* === Header Actions === */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-self: end;
+  flex-shrink: 0; /* Prevent actions from shrinking */
+}
+
+.header-btn, .create-room-btn {
+  background: linear-gradient(90deg, #10b981 80%, #1de9b6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.38rem 1.1rem;
+  font-size: 1rem;
+  height: 34px;
+  min-width: 64px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.10);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.18s, box-shadow 0.18s, color 0.18s, transform 0.13s;
+  cursor: pointer;
+}
+
+.header-btn:hover, .create-room-btn:hover {
+  background: linear-gradient(90deg, #ffe066 0%, #10b981 100%);
+  color: #232e4d;
+  box-shadow: 0 6px 24px 0 #ffe06655, 0 2px 12px 0 #10b98155;
+  border: 1.5px solid #ffe066;
+  outline: none;
+  filter: brightness(1.08) saturate(1.2) drop-shadow(0 2px 8px #ffe06688);
+  transform: translateY(-2px) scale(1.06);
+  transition: background 0.18s, box-shadow 0.18s, color 0.18s, transform 0.13s, filter 0.18s;
+}
+
+.header-btn:focus, .create-room-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.header-actions button {
+  background: none;
+  color: inherit;
+  border: none;
+  border-radius: 6px;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  box-shadow: none;
+  transition: none;
+  cursor: pointer;
+}
+
+/* Profile button avatar tweaks */
+.header-btn .avatar {
+  width: 26px !important;
+  height: 26px !important;
+  font-size: 1rem;
+  margin-right: 0.3rem;
+}
+
+/* Profile dropdown buttons */
+.header-profile-dropdown .header-btn {
+  width: 100%;
+  justify-content: flex-start;
+  background: #f7fafc;
+  color: #181a1b;
+  border-radius: 6px;
+  font-size: 0.97rem;
+  padding: 0.38rem 0.9rem;
+  margin-bottom: 0.3rem;
+  box-shadow: none;
+}
+.header-profile-dropdown .header-btn:hover {
+  background: #0e0f10;
+  color: #10b981;
+}
+
+/* Profile dropdown popup positioning */
+.header-profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 180px;
+  background: linear-gradient(135deg, #070808 70%, #212323 100%);
+  box-shadow: 0 8px 32px 0 #090a0a22, 0 2px 12px 0 #1de9b633;
+  border: 1.5px solid #10b98122;
+  border-radius: 10px;
+  z-index: 2000;
+  padding: 0.5rem 0.2rem;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Styles for the search bar */
+.search-bar-container {
+  flex: 1 0 180px;
+  max-width: 220px;
+  min-width: 140px;
+  margin: 0 0.1rem;
+  transform: translateY(-2px);
+  align-self: center;
+  margin-top: 1rem;
+}
+
+.search-input {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  margin: 1px 12px 14px 14px;
+}
+
+.search-input__icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+}
+
+.search-input input {
+  width: 100%;
+  height: 100%;
+  padding: 0 16px 0 40px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.search-input input:focus {
+  outline: none;
+  border-color: #ffe066;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(255, 224, 102, 0.1);
+}
+
+.search-input input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Dark theme specific styles */
+html.dark .search-input input {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark .search-input input:focus {
+  border-color: #ffe066;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Light theme specific styles */
+html.light .search-input input {
+  background: rgba(0, 0, 0, 0.05);
+  color: #181a1b;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+html.light .search-input input:focus {
+  border-color: #10b981;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+html.light .search-input input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* --- Standardize search bar responsiveness for all screens --- */
+.search-bar-container {
+  flex: 1 0 180px;
+  max-width: 220px;
+  min-width: 140px;
+  margin: 0 0.1rem;
+  transform: translateY(-2px);
+  align-self: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .search-bar-container {
+    flex: 1 1 auto;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+    margin-top: 1rem;
+  }
+  .header-actions {
+    flex-shrink: 0;
+    min-width: 44px; /* Reserve space for hamburger/menu button */
+    z-index: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .create-room-mobile-btn {
+    margin-left: 12px !important;
+    margin-right: 12px !important;
+    width: calc(100vw - 24px) !important;
+    max-width: 340px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-root {
+    min-height: 3.8rem;
+    height: 3.8rem;
+  }
+  .header-container {
+    min-height: 3.8rem;
+    height: 3.8rem;
+    padding-top: 0.45rem;
+    padding-bottom: 0.45rem;
+  }
+  .header-logo {
+    min-width: 50px;
+    margin-right: 0.05rem;
+  }
+  .search-bar-container {
+    flex: 1 1 0%;
+    max-width: 100vw;
+    min-width: 0;
+    margin: 0;
+    margin-top: 0.7rem;
+    padding-right: 40px; /* Slightly less padding to give more width to search bar */
+  }
+  .header-actions {
+    flex-shrink: 0;
+    min-width: 40px;
+    z-index: 2;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-logo {
+    min-width: 40px;
+  }
+  .search-bar-container {
+    padding-right: 36px;
+  }
+}
+
+/* === Mobile Menu Styles === */
+
+.header-mobile-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  background: linear-gradient(135deg, #070808 70%, #212323 100%);
+  box-shadow: 0 8px 32px 0 #090a0a22, 0 2px 12px 0 #1de9b633;
+  border: 1.5px solid #10b98122;
+  border-radius: 10px;
+  z-index: 2000;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  animation: slideDown 0.2s ease-out;
+  transform-origin: top;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.header-mobile-menu .header-btn {
+  width: 100%;
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.97rem;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0;
+  box-shadow: none;
+  transition: all 0.2s ease;
+}
+
+.header-mobile-menu .header-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.header-mobile-menu .header-btn.create-room-btn {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffe066;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.header-mobile-menu .header-btn.create-room-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.header-mobile-menu .theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #ffe066;
+  font-weight: 500;
+}
+
+.header-mobile-menu .theme-btn:hover {
+  color: #fff;
+}
+
+.header-mobile-menu .theme-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Mobile menu button styles */
+.header-menu-btn {
+  background: none;
+  border: none;
+  color: #ffe066;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.header-menu-btn:hover {
+  background: rgba(255, 224, 102, 0.1);
+  transform: scale(1.05);
+}
+
+.header-menu-btn:active {
+  transform: scale(0.95);
+}

@@ -1,0 +1,131 @@
+/* Room.module.css - Modern, flat, responsive room styles */
+
+.roomContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100vw;
+  min-height: 100vh;
+  background: none !important;
+}
+
+.sidebar {
+  width: 240px;
+  min-width: 180px;
+  background: none !important;
+  border-right: 1px solid #23272f;
+  min-height: 100vh;
+  padding: 1.5rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 3000;
+}
+
+.header {
+  width: 100%;
+  padding: 1.5rem 2rem 1rem 2rem;
+  border-bottom: 1px solid #23272f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  margin-bottom: 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  width: 100%;
+  padding: 0 1rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.participantCard {
+  background: rgba(35,39,47,0.55) !important;
+  border-radius: 14px;
+  padding: 12px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 12px #0004;
+  width: 100%;
+  backdrop-filter: blur(8px) saturate(1.1);
+  -webkit-backdrop-filter: blur(8px) saturate(1.1);
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #191b20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: #10b981;
+  margin-bottom: 10px;
+}
+
+.localAvatar {
+  color: #6366f1;
+}
+
+.participantName {
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+@media (max-width: 900px) {
+  .roomContainer {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 3000;
+    box-shadow: 2px 0 16px #0008;
+    display: none;
+  }
+  .sidebarOpen {
+    display: flex;
+  }
+  .header {
+    padding: 1.2rem 1rem 1rem 1rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 1rem 0.5rem 0.7rem 0.5rem;
+    font-size: 1.1rem;
+  }
+  .grid {
+    gap: 10px;
+    padding: 0 0.2rem;
+  }
+  .participantCard {
+    min-height: 120px;
+    padding: 8px;
+  }
+  .avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+} 

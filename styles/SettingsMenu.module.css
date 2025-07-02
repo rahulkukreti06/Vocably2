@@ -1,0 +1,27 @@
+.settingsCloseButton {
+  position: absolute;
+  right: var(--lk-grid-gap);
+  bottom: var(--lk-grid-gap);
+}
+
+.tabs {
+  position: relative;
+  display: flex;
+  align-content: space-between;
+}
+
+.tabs > .tab {
+  padding: 0.5rem;
+  border-radius: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid;
+  border-color: var(--accent-gold, #ffe066);
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.tabs > .tab[aria-pressed='true'] {
+  border-color: var(--primary, #10b981);
+  background: var(--bg-hover);
+  color: var(--accent-gold, #ffe066);
+}

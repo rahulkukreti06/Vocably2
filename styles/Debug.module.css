@@ -1,0 +1,19 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card, 0 8px 48px 0 #ffe06633, 0 1.5px 0 #fff1);
+  padding: 1.5rem;
+  max-height: min(100%, 100vh);
+  overflow-y: auto;
+}
+
+.detailsSection {
+  padding-left: 1rem;
+}
+
+.detailsSection > div {
+  padding-left: 1rem;
+}
