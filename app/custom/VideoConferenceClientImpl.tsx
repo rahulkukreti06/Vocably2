@@ -95,6 +95,8 @@ export function VideoConferenceClientImpl(props: {
     return () => {
       cancelled = true;
       room.off('disconnected', handleDisconnect);
+      // Always disconnect from LiveKit on unmount or navigation for privacy
+      room.disconnect();
     };
   }, [room, props.liveKitUrl, props.token, connectOptions, router]);
 

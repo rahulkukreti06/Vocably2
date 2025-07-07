@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     description:
       'Join Vocably to practice English, learn new languages, and make friends worldwide in real-time voice chat rooms. Safe, free, and easy to use.',
     images: [
-      'https://vocably.chat/images/vocably-og.png',
+      '/favicon.png',
     ],
   },
   openGraph: {
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
       'Vocably lets you join or create voice chat rooms to practice languages, meet new people, and make friends globally. No sign-up required.',
     images: [
       {
-        url: 'https://vocably.chat/images/vocably-og.png',
-        width: 1200,
-        height: 630,
+        url: '/favicon.png',
+        width: 512,
+        height: 512,
         type: 'image/png',
       },
     ],

@@ -11,7 +11,7 @@ const COOKIE_KEY = 'random-participant-postfix';
 export async function GET(request: NextRequest) {
   try {
     // Parse query parameters
-    const roomName = request.nextUrl.searchParams.get('roomName');
+    const roomId = request.nextUrl.searchParams.get('roomId');
     const participantName = request.nextUrl.searchParams.get('participantName');
     const metadata = request.nextUrl.searchParams.get('metadata') ?? '';
     const region = request.nextUrl.searchParams.get('region');
@@ -21,12 +21,24 @@ export async function GET(request: NextRequest) {
       throw new Error('Invalid region');
     }
 
-    if (typeof roomName !== 'string') {
-      return new NextResponse('Missing required query parameter: roomName', { status: 400 });
+    if (typeof roomId !== 'string') {
+      return new NextResponse('Missing required query parameter: roomId', { status: 400 });
     }
     if (participantName === null) {
       return new NextResponse('Missing required query parameter: participantName', { status: 400 });
     }
+
+    // Look up the room by id to get the name
+    const { data: room, error: roomError } = await (await import('@/lib/supabaseClient')).supabase
+      .from('rooms')
+      .select('name')
+      .eq('id', roomId)
+      .single();
+    if (roomError || !room) {
+      return new NextResponse('Room not found', { status: 404 });
+    }
+    // Use the roomId as the unique LiveKit room name to guarantee uniqueness
+    const roomName = roomId;
 
     // Generate participant token
     if (!randomParticipantPostfix) {

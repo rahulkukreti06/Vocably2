@@ -46,17 +46,22 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const { roomId, action } = await request.json();
+  console.log('JOIN API called with:', { roomId, action });
   
   if (!roomId || !action) {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
   }
 
   try {
+    // Debug: print current participantCounts object
+    console.log('Current participantCounts:', participantCounts);
     // Update counts based on action
     if (action === 'join') {
       participantCounts[roomId] = (participantCounts[roomId] || 0) + 1;
+      console.log(`Joined room: ${roomId}, new count: ${participantCounts[roomId]}`);
     } else if (action === 'leave') {
       participantCounts[roomId] = Math.max(0, (participantCounts[roomId] || 0) - 1);
+      console.log(`Left room: ${roomId}, new count: ${participantCounts[roomId]}`);
     }
 
     // Update the participants column in Supabase

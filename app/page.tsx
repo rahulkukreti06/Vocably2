@@ -88,8 +88,11 @@ export default function Page() {
         .from('rooms')
         .select('*')
         .order('created_at', { ascending: false });
-      console.log('Supabase fetchRooms result:', { data, error }); // <-- log result
       if (!error && data) {
+        // Debug: log the fetched rooms array and check for duplicate or incorrect ids
+        console.log('Supabase fetchRooms result:', { data, error });
+        const ids = data.map((r: any) => r.id);
+        console.log('Fetched room ids:', ids);
         setRooms(data);
       }
       setRoomsLoading(false);
@@ -344,7 +347,7 @@ export default function Page() {
         onSearchChange={setSearchTerm}
       />
       <main className="vocably-landing-main" style={{ paddingTop: '7.5rem' }}>
-        {/* Remove duplicate 'Active Rooms' and filter row here, keep only the one inside the rooms.length > 0 conditional below */}
+        {/* ...existing code... */}
         {roomsLoading ? (
           <div className="loading-indicator">Loading rooms...</div>
         ) : rooms.length === 0 ? (

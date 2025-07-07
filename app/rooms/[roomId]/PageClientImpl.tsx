@@ -64,7 +64,7 @@ export default function PageClientImpl(props: {
       try {
         // Use session user name if available, fallback to random
         const participantName = session?.user?.name || 'user-' + Math.random().toString(36).substring(2, 8);
-        const res = await fetch(`/api/connection-details?roomName=${encodeURIComponent(room.name)}&participantName=${encodeURIComponent(participantName)}${props.region ? `&region=${props.region}` : ''}`);
+        const res = await fetch(`/api/connection-details?roomId=${encodeURIComponent(room.id)}&participantName=${encodeURIComponent(participantName)}${props.region ? `&region=${props.region}` : ''}`);
         if (!res.ok) throw new Error('Failed to get connection details');
         const details = await res.json();
         setConnectionDetails(details);
@@ -75,13 +75,12 @@ export default function PageClientImpl(props: {
     fetchConnectionDetails();
   }, [room, props.region, session?.user?.name]);
 
-  // Call leave API on tab close (beforeunload)
+  // Call leave API on tab close (beforeunload) and on route change (popstate)
   React.useEffect(() => {
-    const handleTabClose = (e: BeforeUnloadEvent) => {
+    const leave = () => {
       if (navigator.sendBeacon) {
         navigator.sendBeacon('/api/room-participants', JSON.stringify({ roomId: props.roomId, action: 'leave' }));
       } else {
-        // Fallback for browsers without sendBeacon
         fetch('/api/room-participants', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -90,9 +89,19 @@ export default function PageClientImpl(props: {
         });
       }
     };
-    window.addEventListener('beforeunload', handleTabClose);
+    // Handle browser/tab close
+    window.addEventListener('beforeunload', leave);
+    // Handle browser back/forward navigation
+    window.addEventListener('popstate', leave);
+    // Next.js router navigation (for client-side route changes)
+    const handleVisibility = () => {
+      if (document.visibilityState === 'hidden') leave();
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
     return () => {
-      window.removeEventListener('beforeunload', handleTabClose);
+      window.removeEventListener('beforeunload', leave);
+      window.removeEventListener('popstate', leave);
+      document.removeEventListener('visibilitychange', handleVisibility);
     };
   }, [props.roomId]);
 
