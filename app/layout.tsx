@@ -103,6 +103,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           \"url\": \"https://vocably.chat/",
           \"description\": \"Vocably is a free real-time voice chat app for learning new languages, practicing English, and making friends with people around the world.\"
         }` }} />
+        {/* Google Analytics 4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-MM47J30M5G"></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-MM47J30M5G');`
+        }} />
       </head>
       <body>
         <Providers>
